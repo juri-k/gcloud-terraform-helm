@@ -4,8 +4,8 @@ gcloud-terraform-helm docker image
 
 ## contains:
 
-Gcloud
-Terraform
-Helm (plugins: tillerless, secrets)
-Helmfile
-standard bash tools
+- Gcloud
+- Terraform
+- Helm (plugins: tillerless, secrets)
+- Helmfile
+- standard bash tools
