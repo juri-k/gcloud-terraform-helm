@@ -2,8 +2,10 @@
 
 gcloud-terraform-helm docker image
 
-# contains:
+## contains:
 
-helm (plus tillerless plugin)
-gcloud
-terraform
+Gcloud
+Terraform
+Helm (plugins: tillerless, secrets)
+Helmfile
+standard bash tools
