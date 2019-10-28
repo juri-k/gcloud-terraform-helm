@@ -1,25 +1,20 @@
 FROM alpine:3.10
 
-ENV CLOUD_SDK_VERSION 258.0.0
-ENV TERRAFORM_VERSION=0.12.6
-ENV HELM_VERSION=2.14.3
-ENV HELMFILE_VERSION=0.81.0
-ENV KUBECTL_VERSION=1.15.3
+ENV CLOUD_SDK_VERSION 268.0.0
+ENV TERRAFORM_VERSION=0.12.12
+ENV HELM_VERSION=2.15.1
+ENV HELMFILE_VERSION=0.87.1
+ENV KUBECTL_VERSION=1.15.5
 
 ENV PATH /google-cloud-sdk/bin:$PATH
 RUN apk --no-cache add \
         curl \
         python \
-        py-pip \
         bash \
         libc6-compat \
         git \
         gettext \
-        coreutils \
-        findutils
-
-RUN pip install --upgrade pip && \
-        pip install jinja2
+        coreutils
 
 RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
     tar xzf google-cloud-sdk-${CLOUD_SDK_VERSION}-linux-x86_64.tar.gz && \
