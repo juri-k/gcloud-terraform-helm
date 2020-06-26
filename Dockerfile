@@ -1,10 +1,10 @@
-FROM alpine:3.10
+FROM alpine:3.12
 
-ENV CLOUD_SDK_VERSION 268.0.0
-ENV TERRAFORM_VERSION=0.12.12
-ENV HELM_VERSION=2.15.1
-ENV HELMFILE_VERSION=0.87.1
-ENV KUBECTL_VERSION=1.15.5
+ENV CLOUD_SDK_VERSION=298.0.0
+ENV TERRAFORM_VERSION=0.12.28
+ENV HELM_VERSION=3.2.4
+ENV HELMFILE_VERSION=0.119.0
+ENV KUBECTL_VERSION=1.18.4
 
 ENV PATH /google-cloud-sdk/bin:$PATH
 RUN apk --no-cache add \
@@ -28,7 +28,7 @@ RUN curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cl
 RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl && \
     chmod +x kubectl && mv kubectl /usr/bin/
 
-RUN wget --quiet https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+RUN wget --quiet https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
     && tar -xzf helm-v${HELM_VERSION}-linux-amd64.tar.gz \
     && mv linux-amd64/helm /usr/bin \
     && rm -rf linux-amd64
@@ -37,7 +37,6 @@ RUN curl -L -o /usr/bin/helmfile https://github.com/roboll/helmfile/releases/dow
     chmod +x /usr/bin/helmfile
 
 RUN mkdir -p ~/.helm/plugins && \
-    helm plugin install https://github.com/rimusz/helm-tiller && \
     helm plugin install https://github.com/futuresimple/helm-secrets 
 
 RUN wget --quiet https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
