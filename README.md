@@ -8,4 +8,5 @@ gcloud-terraform-helm docker image
 - Terraform
 - Helm (plugins: secrets)
 - Helmfile
+- kubectl
 - standard bash tools
